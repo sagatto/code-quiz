@@ -15,19 +15,16 @@ var highScoreInitialsLister = document.getElementById('highScoreInitialsLister')
 var highScoreDiv = document.getElementById("highScoreDiv")
 var saveScore = document.getElementById("saveScore")
 var backToMain = document.getElementById("backToMain")
+var rightWrong = document.getElementById("rightWrong")
 
-// //main page - quiz desctiption and button to start quiz
-// var startPage = function () {
-//     scoreForm.style.display = "none";
-//     startButton.addEventListener("click", questionGame)
-//     askQuestion.textContent = "Coding Quiz Challenge"
-//     // answer1.textContent = "When you start the quiz, the timer will start counting down from 99 seconds."
-//     // answer2.textContent = "Answer each question as quickly as you can."
-//     // answer3.textContent = "Wrong answers will remove 10 seconds from your remaining time."
-//     // answer4.textContent = "However much time is left when you complete will be your final score. Good luck!"
-// }
+// main page - quiz desctiption and button to start quiz
+var startPage = function () {
+    scoreForm.style.display = "none";
+    startButton.addEventListener("click", questionGame)
+    askQuestion.textContent = "Coding Quiz Challenge"
+}
 
-//set timer variable globally
+// set timer variable globally
 var timeLeft = 99;
 
 var questionGame = function () {
@@ -55,7 +52,7 @@ var questionGame = function () {
     answer4.addEventListener("click", rightOrWrong); answer4.textContent = quizQuestions[questionIndex].answer4;
 
 
-    //main game functionality and high score page
+    // main game functionality and high score page
     nextQuestion();
 }
 
@@ -142,7 +139,7 @@ var quizQuestions = [
         a: 'answer2'
     },
 ]
-//set initial question index
+// set initial question index
 var questionIndex = 0;
 
 // show score page if no q's left or if time ran out, display questions and answers on the page with index listener if questions remain sent to right/wrong function
@@ -167,16 +164,18 @@ var rightOrWrong = function (event) {
         //next question
         questionIndex++;
         nextQuestion();
+        rightWrong.innerHTML = 'Correct!';
     } else if (targetEl.id !== quizQuestions[questionIndex].a) {
         //subtract time
         timeLeft = timeLeft - 10;
         //next question
+        rightWrong.innerHTML = 'Wrong!';
         questionIndex++;
         nextQuestion();
     };
 }
 
-//End of game 
+// End of game 
 var endGamePage = function () {
     //hide timer
     timer.style.display = "none";
@@ -191,16 +190,16 @@ var endGamePage = function () {
     finalScoreP.textContent = "Your final score is " + currentScore;
 }
 
-//save high score to local storage if it beat the previous
+// save high score to local storage if it beat the previous
 saveScore.addEventListener("click", function (event) {
-    event.preventDefault();
+    //
     var currentScore = localStorage.getItem("currentScore");
     var storedScore = localStorage.getItem("highScore");
 
     if (currentScore >= storedScore) {
-    localStorage.setItem('highScore', currentScore);
-    var input = document.getElementById("initials").value;
-    localStorage.setItem("highScoreInitials", input);
+        localStorage.setItem('highScore', currentScore);
+        var input = document.getElementById("initials").value;
+        localStorage.setItem("highScoreInitials", input);
     }
 });
 
