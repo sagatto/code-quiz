@@ -19,3 +19,13 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
+
+## Deployed Application Screenshots
+
+### Main Page
+
+![](/assets/images/codequiz-ss-index.png)
+
+### Quiz Page
+
+![](/assets/images/codequiz-ss-quizpage.png)
