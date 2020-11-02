@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz!</title>
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="highscores.html">View High Scores</a>
+        </div>
+        <div id="time-left">
+            <p>Time Left:</p>
+            <div id="timer"></div>
+        </div> 
+    </header>
+    
+    <main id="main">
+        <section id="content-wrapper">
+            <div id = "quiz-wrapper">
+                <ul id="answer-list">
+                    <li id="answer1"></li>
+                    <li id="answer2"></li>
+                    <li id="answer3"></li>
+                    <li id="answer4"></li>
+                </ul>
+                <p id="finalScoreP"></p>
+                <form id="scoreForm">
+                    <input type="text" name="initials" id="initials" placeholder="Enter your initials" />
+                    <button id="saveScore">Submit</button>
+                    <button id="backToMain">Try Again!</button>
+                </form>
+            </div>
+            
+        </section>
+    </main>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
